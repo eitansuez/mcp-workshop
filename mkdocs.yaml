@@ -1,0 +1,41 @@
+site_name: "MCP: From Zero to Production"
+# site_url: tbd
+# repo_url: tbd
+theme:
+  name: material
+  features:
+  - navigation.top
+  - navigation.instant
+  - navigation.tracking
+  - navigation.footer
+  - navigation.expand
+  - content.code.annotate
+  - content.code.copy
+  - content.tabs.link
+  palette:
+    primary: blue grey
+nav:
+- index.md
+- mcp-server.md
+- oauth.md
+markdown_extensions:
+- admonition
+- pymdownx.details
+- pymdownx.superfences
+- pymdownx.highlight:
+    anchor_linenums: true
+    line_spans: __span
+    pygments_lang_class: true
+- pymdownx.inlinehilite
+- pymdownx.snippets:
+    base_path: artifacts
+    check_paths: true
+- attr_list
+- pymdownx.tabbed:
+    alternate_style: true
+- pymdownx.critic
+- pymdownx.caret
+- pymdownx.keys
+- pymdownx.mark
+- pymdownx.tilde
+- smarty
