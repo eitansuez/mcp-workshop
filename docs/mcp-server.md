@@ -36,7 +36,7 @@ Review the following simple application that exposes a single "echo" tool:
 Copy the above `main.py` script to your project, replacing the stub `main.py` previously produced by `uv init`:
 
 ```shell
-cp artifacts/main.py echo-mcp-server/
+cp ../artifacts/main.py .
 ```
 
 ## Test it

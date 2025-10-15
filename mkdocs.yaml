@@ -18,6 +18,7 @@ nav:
 - index.md
 - mcp-server.md
 - oauth.md
+- resource-server.md
 markdown_extensions:
 - admonition
 - pymdownx.details

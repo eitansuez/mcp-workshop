@@ -57,8 +57,8 @@ Great!  That should be all we need to implement the authorization server.
 Make note of the following pieces of information, which you will need in the next step, as you configure your resource server to validate tokens presented by clients:
 
 - audience: `echo-mcp-server`
-- issuer: http://localhost:8080/realms/my-realm
-- jwks URI: http://localhost:8080/realms/my-realm/protocol/openid-connect/certs
+- issuer: `http://localhost:8080/realms/my-realm`
+- jwks URI: `http://localhost:8080/realms/my-realm/protocol/openid-connect/certs`
 
 The audience represents the intended audience for the token, and to disambiguate these tokens from ones relevant in the context of other applications and resources.
 
