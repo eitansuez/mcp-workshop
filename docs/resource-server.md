@@ -133,6 +133,8 @@ The _Authentication Settings_ page in the inspector provides a guided OAuth flow
 
 The full flow functions:  Click _Connect_ and confirm that you can still list tools and call the `echo` tool as before.
 
+_Disconnect_ from the MCP Server and terminate the application.
+
 ## Summary
 
 Congrats!  Basic OAuth authorization is functioning.

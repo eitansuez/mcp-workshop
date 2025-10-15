@@ -19,6 +19,7 @@ nav:
 - mcp-server.md
 - oauth.md
 - resource-server.md
+- proxy-mcp.md
 markdown_extensions:
 - admonition
 - pymdownx.details
