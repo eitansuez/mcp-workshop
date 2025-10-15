@@ -81,7 +81,7 @@ curl -s http://localhost:8000/.well-known/oauth-protected-resource/mcp | jq
 
 !!! note "^*^ Above"
 
-    FastMCP appends the suffix `/mcp` to the oauth protected resource.
+    Per [RFC 9728](https://datatracker.ietf.org/doc/html/rfc9728#PRConfigurationRequest) the actual URL for the resource metadata is composed by appending the path of the requested resource: `/mcp`.
 
 We are indeed told where to find the authorization server:
 
