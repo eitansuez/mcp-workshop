@@ -1,5 +1,7 @@
 # Introduction
 
+## Preface
+
 In this workshop you will learn to build MCP servers and secure them with OAuth2.
 
 An important focus is building and deploying production-ready MCP services, ones that can be maintained, upgraded, consumed by multiple agents, and secured with authentication and authorization policies.
@@ -13,9 +15,11 @@ One influence is Christian's four-part series "Understanding MCP Authorization, 
 - [Part 3: Keycloak](https://blog.christianposta.com/understanding-mcp-authorization-step-by-step-part-three/)
 - [Part 4: DCR](https://blog.christianposta.com/understanding-mcp-authorization-with-dynamic-client-registration/)
 
-Another is Christian Posta and Lin Sun's upcoming ebook "AI Agents in Kubernetes."
+Another is Christian Posta and Lin Sun's upcoming ebook _AI Agents in Kubernetes_.
 
-You will:
+## The workshop
+
+In this workshop, you will:
 
 1. Build an MCP server & test it with MCP inspector
 2. Provision Keycloak and configure it as the Identity Provider (IdP).
@@ -30,3 +34,7 @@ In the second part of this workshop, you will:
 1. Deploy MCP servers to Kubernetes.
 2. Build an agent (with kagent) that utilizes the tools exposed by the MCP server.
 3. See the tool server work in an end-to-end scenario with an agent.
+
+!!! note
+
+    The second part of this workshop is not yet developed.
