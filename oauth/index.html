@@ -471,7 +471,8 @@ When you tested your MCP server in the last section, the MCP inspector played th
 <ul>
 <li>A realm named <code>my-realm</code>.</li>
 <li>A pre-configured user: <code>eitan/test</code>.</li>
-<li>A client named <code>mcp-client</code>, pre-configured with the audience named <code>echo-mcp-server</code>.</li>
+<li>A client named <code>mcp-client</code>.</li>
+<li>A client scope named <code>mcp:tools</code> that configures the token&rsquo;s audience to <code>echo-mcp-server</code>.</li>
 </ul>
 <p>Optional scopes can be additionally configured to support different levels of authorization, though none are defined by default.</p>
 <h2 id="review-the-keycloak-configuration">Review the Keycloak configuration</h2>
@@ -480,8 +481,8 @@ When you tested your MCP server in the last section, the MCP inspector played th
 <li>Log in as administrator using the above cited &ldquo;admin&rdquo; credentials.</li>
 <li>Click &ldquo;Manage realms&rdquo; and select the realm named <code>my-realm</code> to render it the &ldquo;current&rdquo; realm.</li>
 <li>Select &ldquo;Users&rdquo; and verify that a user named &ldquo;eitan&rdquo; is predefined.</li>
-<li>Select clients and note that the client <code>mcp-client</code> is predefined.</li>
-<li>Select the client <code>mcp-client</code> and the tab <code>Client scopes</code>, and the scope named <code>mcp-client-dedicated</code> and note the presence of the audience mapper <code>echo-mcp-server</code></li>
+<li>Select &ldquo;Clients&rdquo; and note that the client <code>mcp-client</code> is predefined.</li>
+<li>Select &ldquo;Client scopes&rdquo;, and the scope named <code>mcp:tools</code>, note under &ldquo;Mappers&rdquo; the mapper named <code>echo-mcp-server</code> which configures the audience for the token.</li>
 </ul>
 <h2 id="summary">Summary</h2>
 <p>Great!  That should be all we need to implement the authorization server.</p>
