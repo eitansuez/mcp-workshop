@@ -129,7 +129,7 @@ The _Authentication Settings_ page in the inspector provides a guided OAuth flow
    Click _Continue_
 4. Token Request: Click _Continue_.  The inspector will call the token endpoint with the supplied authorization code.
 5. Authentication Complete: Expand _Access Tokens_ to revel the access token obtained from the token endpoint.
-   Feel free to use sites such as jwt.io to decode the access token and confirm that the audience scope is present in the token.
+   Feel free to use sites such as [jwt.io](http://jwt.io) to decode the access token and confirm that the audience scope is present in the token.
 
 The full flow functions:  Click _Connect_ and confirm that you can still list tools and call the `echo` tool as before.
 
