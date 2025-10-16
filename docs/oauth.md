@@ -36,7 +36,8 @@ The configuration you just imported consists of:
 
 - A realm named `my-realm`.
 - A pre-configured user: `eitan/test`.
-- A client named `mcp-client`, pre-configured with the audience named `echo-mcp-server`.
+- A client named `mcp-client`.
+- A client scope named `mcp:tools` that configures the token's audience to `echo-mcp-server`.
 
 Optional scopes can be additionally configured to support different levels of authorization, though none are defined by default.
 
@@ -47,8 +48,8 @@ With Keycloak up and running, visit its web user interface at [http://localhost:
 - Log in as administrator using the above cited "admin" credentials.
 - Click "Manage realms" and select the realm named `my-realm` to render it the "current" realm.
 - Select "Users" and verify that a user named "eitan" is predefined.
-- Select clients and note that the client `mcp-client` is predefined.
-- Select the client `mcp-client` and the tab `Client scopes`, and the scope named `mcp-client-dedicated` and note the presence of the audience mapper `echo-mcp-server`
+- Select "Clients" and note that the client `mcp-client` is predefined.
+- Select "Client scopes", and the scope named `mcp:tools`, note under "Mappers" the mapper named `echo-mcp-server` which configures the audience for the token.
 
 ## Summary
 
