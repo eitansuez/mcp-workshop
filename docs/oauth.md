@@ -18,7 +18,7 @@ In the spirit of doing this simplest thing that will work, run Keycloak with Doc
 docker run -d --name keycloak -p 8080:8080 \
   -e KC_BOOTSTRAP_ADMIN_USERNAME=admin \
   -e KC_BOOTSTRAP_ADMIN_PASSWORD=admin \
-  -v ./artifacts/keycloak-seed:/opt/keycloak/data/import \
+  -v ../artifacts/keycloak-seed:/opt/keycloak/data/import \
   quay.io/keycloak/keycloak:latest start-dev --import-realm
 ```
 
