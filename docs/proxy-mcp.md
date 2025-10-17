@@ -10,11 +10,19 @@ In this exercise, security policy configuration and enforcement is moved out of 
 
 [agentgateway](https://agentgateway.dev/) is a modern proxy that supports modern AI protocols including [MCP](https://agentgateway.dev/docs/mcp/) and A2A.
 
+### Install agentgateway
+
+[Install](https://agentgateway.dev/docs/quickstart/) the `agentgateway` binary to your project directory:
+
+```shell
+USE_SUDO=false AGENTGATEWAY_INSTALL_DIR=. curl https://raw.githubusercontent.com/agentgateway/agentgateway/refs/heads/main/common/scripts/get-agentgateway | bash
+```
+
+## Proxy the MCP server
+
 The documentation provides [an example](https://agentgateway.dev/docs/mcp/connect/http/) for configuring and running the gateway to route requests to an MCP backend.
 
 Let's give it a try to understand how this works.
-
-## Proxy the MCP server
 
 Run the basic MCP server:
 
@@ -41,7 +49,7 @@ cp ../artifacts/ag-config.yaml .
 Start the agentgateway:
 
 ```shell
-agentgateway -f ag-config.yaml
+./agentgateway -f ag-config.yaml
 ```
 
 Launch the MCP inspector:
@@ -50,7 +58,7 @@ Launch the MCP inspector:
 npx @modelcontextprotocol/inspector
 ```
 
-Point the _URL_ field to the agentgateway proxy running on port 9000:  http://localhost:9000/mcp
+Point the _URL_ field to the agentgateway proxy running on port 9000:  `http://localhost:9000/mcp`
 
 Click _Connect_ and confirm that everything works, as if we were communicating directly with the MCP server.
 
@@ -87,7 +95,7 @@ uv run main.py
 Start the agentgateway:
 
 ```shell
-agentgateway -f ag-oauth-config.yaml
+./agentgateway -f ag-oauth-config.yaml
 ```
 
 Finally, launch the MCP Inspector.

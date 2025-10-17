@@ -1,0 +1,25 @@
+binds:
+- port: 9000
+  listeners:
+  - routes:
+    - policies:
+        cors:
+          allowOrigins:
+          - "*"
+          allowHeaders:
+          - "*"
+        jwtAuth:
+          mode: strict
+          issuer: "acme@example.com"
+          audiences: [mcp.example.com]
+          jwks:
+            file: ./jwks-keyset
+        mcpAuthorization:
+          rules:
+          - 'mcp.tool.name == "echo" && "admin" in jwt.roles'
+      backends:
+      - mcp:
+          targets:
+          - name: mcp
+            mcp:
+              host: http://localhost:8000/mcp
