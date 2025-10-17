@@ -8,13 +8,11 @@
       
       
       
-        <link rel="canonical" href="https://eitansuez.github.io/mcp-workshop/mcp-server/mcp-server/">
+        <link rel="canonical" href="https://eitansuez.github.io/mcp-workshop/mcp-server/mcp-k8s/">
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../enterprise-sso/">
       
-      
-        <link rel="next" href="../oauth/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -22,7 +20,7 @@
     
     
       
-        <title>A simple MCP server - MCP: From Zero to Production</title>
+        <title>Targeting Kubernetes - MCP: From Zero to Production</title>
       
     
     
@@ -72,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#a-simple-mcp-server" class="md-skip">
+        <a href="#targeting-kubernetes" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              A simple MCP server
+              Targeting Kubernetes
             
           </span>
         </div>
@@ -247,32 +245,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    A simple MCP server
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../mcp-server/" class="md-nav__link">
         
   
   
@@ -283,53 +259,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      Steps
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#test-it" class="md-nav__link">
-    <span class="md-ellipsis">
-      Test it
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
-    <span class="md-ellipsis">
-      Summary
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -426,10 +355,19 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../mcp-k8s/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -440,6 +378,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -464,41 +403,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      Steps
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#test-it" class="md-nav__link">
-    <span class="md-ellipsis">
-      Test it
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
-    <span class="md-ellipsis">
-      Summary
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -516,73 +420,8 @@
   
 
 
-<h1 id="a-simple-mcp-server">A simple MCP server</h1>
-<p>Begin by creating a simple MCP service with a single, simple &ldquo;echo&rdquo; tool.</p>
-<h2 id="steps">Steps</h2>
-<p>In a terminal, create a project directory and navigate to it:</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span>echo-mcp-server<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>echo-mcp-server
-</span></code></pre></div>
-<p>Initialize a python project:</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>uv<span class="w"> </span>init
-</span></code></pre></div>
-<p>We will use the <a href="https://gofastmcp.com/">fastmcp</a> framework, so add the dependency:</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>uv<span class="w"> </span>add<span class="w"> </span>fastmcp
-</span></code></pre></div>
-<p>Review the following simple application that exposes a single &ldquo;echo&rdquo; tool:</p>
-<div class="language-python highlight"><span class="filename">main.py</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annotated</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fastmcp</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastMCP</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">mcp</span> <span class="o">=</span> <span class="n">FastMCP</span><span class="p">(</span><span class="s2">&quot;MCP Echo Server&quot;</span><span class="p">)</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">echo</span><span class="p">(</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>        <span class="n">message</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;Message to echo&quot;</span><span class="p">],</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>        <span class="n">repeat_count</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Number of times to repeat the message&quot;</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">10</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">3</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Echo a message a specified number of times.&quot;&quot;&quot;</span>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>        <span class="k">return</span> <span class="n">message</span> <span class="o">*</span> <span class="n">repeat_count</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>    <span class="n">mcp</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">transport</span><span class="o">=</span><span class="s2">&quot;http&quot;</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">)</span>
-</span></code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<ul>
-<li>The function produces a string that repeats the given message a given number of times.</li>
-<li>The MCP service is launched using the <code>http</code> transport on port 8000</li>
-</ul>
-</div>
-<p>Copy the above <code>main.py</code> script to your project, replacing the stub <code>main.py</code> previously produced by <code>uv init</code>:</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>cp<span class="w"> </span>../artifacts/main.py<span class="w"> </span>.
-</span></code></pre></div>
-<h2 id="test-it">Test it</h2>
-<p>Launch the application:</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>uv<span class="w"> </span>run<span class="w"> </span>main.py
-</span></code></pre></div>
-<p>You should see the FastMCP banner come up.</p>
-<p>In a separate terminal, launch the MCP Inspector:</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>npx<span class="w"> </span>@modelcontextprotocol/inspector
-</span></code></pre></div>
-<p>In the Inspector&rsquo;s browser page, on the left hand side, specify:</p>
-<ol>
-<li>Transport Type:  <code>Streamable HTTP</code></li>
-<li>URL: <code>http://localhost:8000/mcp</code></li>
-</ol>
-<p>Click <em>Connect</em>.</p>
-<p>The inspector will switch to the <em>Connected</em> state.</p>
-<ul>
-<li>Select the <code>tools</code> tab from the header.</li>
-<li>Click <em>List Tools</em> - the <code>echo</code> tool will display.</li>
-<li>Select the <code>echo</code> tool.</li>
-<li>Enter a message.</li>
-<li>Click <em>Run tool</em>.</li>
-</ul>
-<p>Validate the results.
-<em>Disconnect</em> the inspector once you are satisfied that the tool is functioning properly and terminate the running MCP server (press <em>Ctrl+C</em> in the terminal).</p>
-<h2 id="summary">Summary</h2>
-<p>We now have a basic MCP server.
-In the next step, we turn our attention to MCP authorization.</p>
+<h1 id="targeting-kubernetes">Targeting Kubernetes</h1>
+<p>tbd</p>
 
 
 
@@ -620,7 +459,7 @@ In the next step, we turn our attention to MCP authorization.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction">
+          <a href="../enterprise-sso/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Enterprise Single sign-on (SSO)">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -630,27 +469,11 @@ In the next step, we turn our attention to MCP authorization.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Introduction
+                Enterprise Single sign-on (SSO)
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../oauth/" class="md-footer__link md-footer__link--next" aria-label="Next: MCP authorization">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                MCP authorization
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
