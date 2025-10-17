@@ -63,7 +63,7 @@ It launches the MCP server, and the MCP inspector, allowing us to test connectin
 
 ## Build and Package
 
-The kcmp `build` command simplifies building and packaging the MCP server:
+The kmcp `build` command simplifies building and packaging the MCP server:
 
 ```shell
 kmcp build --help
