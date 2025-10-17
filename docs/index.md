@@ -24,17 +24,9 @@ In this workshop, you will:
 1. Build an MCP server & test it with MCP inspector
 2. Provision Keycloak and configure it as the Identity Provider (IdP).
 3. Configure the MCP server with OAuth2 and demonstrate authentication flow.
-4. Introduce agentgateway as a passthrough proxy.
-5. Shift the authentication & authorization configuration from the MCP server to the gateway
+4. Introduce agentgateway as a proxy, and shift the authentication & authorization enforcement from the MCP server to the gateway
+5. Configure the gateway to perform JWT authentication instead, and apply an MCP authorization policy.
 
 We then shift focus to deploying the solution on Kubernetes.
 
-In the second part of this workshop, you will:
-
-1. Deploy MCP servers to Kubernetes.
-2. Build an agent (with kagent) that utilizes the tools exposed by the MCP server.
-3. See the tool server work in an end-to-end scenario with an agent.
-
-!!! note
-
-    The second part of this workshop is not yet developed.
+In the final activity, you will learn to build and deploy an MCP server to Kubernetes.

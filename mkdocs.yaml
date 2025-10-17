@@ -21,6 +21,7 @@ nav:
 - resource-server.md
 - proxy-mcp.md
 - enterprise-sso.md
+- mcp-k8s.md
 markdown_extensions:
 - admonition
 - pymdownx.details
