@@ -367,6 +367,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Targeting Kubernetes
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -378,6 +391,70 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scaffolding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scaffolding
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-the-mcp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test the MCP Server
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-and-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build and Package
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -403,6 +480,59 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scaffolding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scaffolding
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-the-mcp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test the MCP Server
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-and-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build and Package
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -421,7 +551,67 @@
 
 
 <h1 id="targeting-kubernetes">Targeting Kubernetes</h1>
-<p>tbd</p>
+<p>Activities so far have run MCP servers on a local machine.
+This is useful when developing.</p>
+<p>In this final activity, you will learn about <a href="https://kagent.dev/docs/kmcp">kmcp</a>, (a part of the <a href="https://kagent.dev/">kagent project</a>) a tool designed specifically to aid with the end-to-end process, from scaffolding a new project, to building a Docker image, to deploying the MCP server to Kubernetes.</p>
+<p>install the kmcp CLI</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/kagent-dev/kmcp/refs/heads/main/scripts/get-kmcp.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+</span></code></pre></div>
+<p>A Kubernetes cluster is running.</p>
+<p>Deploy the kmcp CRDs:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>helm<span class="w"> </span>install<span class="w"> </span>kmcp-crds<span class="w"> </span>oci://ghcr.io/kagent-dev/kmcp/helm/kmcp-crds<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>--namespace<span class="w"> </span>kmcp-system<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>--create-namespace
+</span></code></pre></div>
+<p>Run <code>kmcp install</code> to deploy the Kubernetes controller:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>kmcp<span class="w"> </span>install
+</span></code></pre></div>
+<h2 id="scaffolding">Scaffolding</h2>
+<p>kmcp supports multiple target frameworks: go, python, java, and typescript.</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>kmcp<span class="w"> </span>init<span class="w"> </span>--help
+</span></code></pre></div>
+<p>Start a new python project:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>kmcp<span class="w"> </span>init<span class="w"> </span>python<span class="w"> </span>my-mcp-server<span class="w"> </span>--description<span class="w"> </span><span class="s2">&quot;My first mcp server&quot;</span><span class="w"> </span>--non-interactive<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>my-mcp-server
+</span></code></pre></div>
+<p>Inspect the project directory structure:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>tree<span class="w"> </span>.
+</span></code></pre></div>
+<p>An example <code>echo</code> tool is present by default.
+It&rsquo;s easy to add more tools by adding more <code>.py</code> files to the <code>tools/</code> subdirectory.</p>
+<h2 id="test-the-mcp-server">Test the MCP Server</h2>
+<p>The kmcp CLI provides a convenient <code>run</code> command:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>kmcp<span class="w"> </span>run
+</span></code></pre></div>
+<p>It launches the MCP server, and the MCP inspector, allowing us to test connecting to the server, listing tools, and running them.</p>
+<h2 id="build-and-package">Build and Package</h2>
+<p>The kcmp <code>build</code> command simplifies building and packaging the MCP server:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>kmcp<span class="w"> </span>build<span class="w"> </span>--help
+</span></code></pre></div>
+<p>Building the MCP server produces a Docker image:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>kmcp<span class="w"> </span>build<span class="w"> </span>--tag<span class="w"> </span>my-mcp-server:latest
+</span></code></pre></div>
+<p>Next, we can publish the container image to a registry.</p>
+<p>Here let&rsquo;s simply upload the image to the cluster:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>k3d<span class="w"> </span>image<span class="w"> </span>import<span class="w"> </span>my-mcp-server<span class="w"> </span>--cluster<span class="w"> </span>my-k8s-cluster
+</span></code></pre></div>
+<h2 id="deploy">Deploy</h2>
+<p>Finally, deploy the MCP server to the cluster:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>kmcp<span class="w"> </span>deploy<span class="w"> </span>--file<span class="w"> </span>kmcp.yaml<span class="w"> </span>--image<span class="w"> </span>my-mcp-server:latest
+</span></code></pre></div>
+<p>Deployment generates and applies an MCPServer resource to the cluster:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>mcpserver<span class="w"> </span>my-mcp-server<span class="w"> </span>-o<span class="w"> </span>yaml
+</span></code></pre></div>
+<p>The kmcp controller watches for MCPServer resources and creates (and applies) the deployment manifest for us:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pod
+</span></code></pre></div>
+<p>The above deploy command also launches an MCP inspector allowing us to test the deployed MCP server.</p>
+<h2 id="summary">Summary</h2>
+<p>Congratulations!  Your MCP server is now running on Kubernetes.</p>
+<p>The story does not end here.</p>
+<p>Agentgateway is <a href="https://agentgateway.dev/docs/kubernetes/">supported in Kubernetes</a> by the kgateway project, a control plane that can dynamically program agentgateway using cloud-native APIs such as the Kubernetes Gateway API and AI extensions.</p>
+<p>With kgateway, we can deploy an agentgateway proxy for our MCP server and configure it to route requests to the MCP server, with MCP authorization and other policies.
+See Christian Posta and Lin Sun&rsquo;s upcoming ebook <em>AI Agents in Kubernetes</em> for more information.</p>
 
 
 
