@@ -124,7 +124,7 @@ The _Authentication Settings_ page in the inspector provides a guided OAuth flow
   The inspector fetched the discovery endpoint and used it to introspect Keycloak's metadata to discover the endpoints for registration, authorization, and the token endpoint.
 2. Client registration:  since we're using a registered client `mcp-client`, no registration takes place.  Click _Continue_
 3. Preparing Authorization: This is where the client constructs the authorization URL.
-   Follow the URL, and log in to Keycloak using the realm user `eitan` (password `test`).:w
+   Follow the URL, and log in to Keycloak using the realm user `eitan` (password `test`).
    An authorization code is presented.  Copy it and paste it into the _Authorization Code_ field.
    Click _Continue_
 4. Token Request: Click _Continue_.  The inspector will call the token endpoint with the supplied authorization code.
