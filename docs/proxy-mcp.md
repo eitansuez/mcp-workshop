@@ -112,7 +112,7 @@ Start by walking through the Guided OAuth flow:
 - Click _Guided OAuth Flow_.
 - Like before, go through all steps from Metadata Discovery through to Token request.
 - When instructed to follow the authorization URL, log in with the user credentials `eitan/test`.
-- Copy and pate the authorization code into the corresponding field.
+- Copy and paste the authorization code into the corresponding field.
 
 When the authentication completes, we have been issued a token.
 
