@@ -1,5 +1,5 @@
 site_name: "MCP: From Zero to Production"
-site_url: https://eitansuez.github.io/mcp-workshop/mcp-server/
+site_url: https://eitansuez.github.io/mcp-workshop
 repo_url: https://github.com/eitansuez/mcp-workshop
 theme:
   name: material
