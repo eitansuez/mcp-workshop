@@ -72,11 +72,11 @@ The project documentation provides [an example](https://agentgateway.dev/docs/mc
 
 Review the updated agentgateway configuration file:
 
-```yaml title="ag-oauth-config.yaml" linenums="1" hl_lines="11-14"
+```yaml title="ag-oauth-config.yaml" linenums="1" hl_lines="11-16"
 --8<-- "ag-oauth-config.yaml"
 ```
 
-Above, note that the configuration utilizes the same `issuer`, `jwksUrl`, and `audience` field values for the authorization server.
+Above, note that the configuration utilizes the same `issuer`, `jwks.url`, and `audiences` field values for the authorization server.
 
 Copy the above `ag-oauth-config.yaml` script to your project:
 
