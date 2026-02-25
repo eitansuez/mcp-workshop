@@ -10,8 +10,10 @@ binds:
           - "*"
         mcpAuthentication:
           issuer: http://localhost:8080/realms/my-realm
-          jwksUrl: http://localhost:8080/realms/my-realm/protocol/openid-connect/certs
-          audience: echo-mcp-server
+          jwks:
+            url: http://localhost:8080/realms/my-realm/protocol/openid-connect/certs
+          audiences:
+          - echo-mcp-server
           resourceMetadata:
             resource: http://localhost:9000/mcp
             scopesSupported:
