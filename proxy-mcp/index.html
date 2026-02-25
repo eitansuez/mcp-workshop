@@ -803,9 +803,9 @@
 </span></span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="hll"><span class="w">          </span><span class="nt">issuer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://localhost:8080/realms/my-realm</span>
 </span></span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="hll"><span class="w">          </span><span class="nt">jwks</span><span class="p">:</span>
 </span></span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="hll"><span class="w">            </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://localhost:8080/realms/my-realm/protocol/openid-connect/certs</span>
-</span></span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="w">          </span><span class="nt">audiences</span><span class="p">:</span>
-</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo-mcp-server</span>
-</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="w">          </span><span class="nt">resourceMetadata</span><span class="p">:</span>
+</span></span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="hll"><span class="w">          </span><span class="nt">audiences</span><span class="p">:</span>
+</span></span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16"></a><span class="hll"><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo-mcp-server</span>
+</span></span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="w">          </span><span class="nt">resourceMetadata</span><span class="p">:</span>
 </span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18"></a><span class="w">            </span><span class="nt">resource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://localhost:9000/mcp</span>
 </span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19"></a><span class="w">            </span><span class="nt">scopesSupported</span><span class="p">:</span>
 </span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openid</span>
@@ -818,7 +818,7 @@
 </span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27"></a><span class="w">            </span><span class="nt">mcp</span><span class="p">:</span>
 </span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28"></a><span class="w">              </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://localhost:8000/mcp</span>
 </span></code></pre></div></td></tr></table></div>
-<p>Above, note that the configuration utilizes the same <code>issuer</code>, <code>jwksUrl</code>, and <code>audience</code> field values for the authorization server.</p>
+<p>Above, note that the configuration utilizes the same <code>issuer</code>, <code>jwks.url</code>, and <code>audiences</code> field values for the authorization server.</p>
 <p>Copy the above <code>ag-oauth-config.yaml</code> script to your project:</p>
 <div class="language-shell highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cp<span class="w"> </span>../artifacts/ag-oauth-config.yaml<span class="w"> </span>.
 </span></code></pre></div>
